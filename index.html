@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08MBID Trabajo Práctico</title>
+</head>
+<body>
+
+  <div class="header">
+    <h1>
+      Trabajo práctico: Las viviendas de alquiler turístico en Andalucía
+    </h1>
+  </div>
+
+  <div class="container">
+    <table>
+      <tr>
+        <th colspan="2"><b>Máster en Big Data y Data Science - Universidad Internacional de Valencia</b></th>
+      </tr>
+      <tr>
+        <th colspan="2"><b>08MBID - Visualización de Datos</b></th>
+      </tr>
+      <tr>
+        <td style="width:150px;">Nombre:</td>
+        <td>Antonio Manuel Palma Bautista</td>
+      </tr>
+      <tr>
+        <td>Fecha:</td>
+        <td>23 de noviembre de 2023</td>
+      </tr>
+      <tr>
+        <td>URL Stackblitz:</td>
+        <td><a href="https://js-1pvcyf.stackblitz.io/" target=_blank>js-1pvcyf.stackblitz.io</a></td>
+      </tr>
+      <tr>
+        <td>URL GitHub:</td>
+        <td><a href="https://github.com/ampalmabautista/08MBID" target=_blank>github.com/ampalmabautista/08MBID</a></td>
+      </tr>
+      <tr>
+        <td>URL GoogleSheets:</td>
+        <td><a href="https://docs.google.com/spreadsheets/d/1-FtWb2QwMunzDZ0p2-wO_ZsAFfuqXOmldy3iVmXs62Y/edit?usp=sharing" target=_blank>docs.google.com/spreadsheets/d/1-FtWb2QwMunzDZ0p2-wO_ZsAFfuqXOmldy3iVmXs62Y/edit?usp=sharing</a></td>
+      </tr>
+    </table>
+   
+    
+    <div class="section">
+        <h2>Consideraciones previas</h2>
+
+          <h3>Contexto de partida</h3>
+          <p>Retomando el caso que se planteó en la asignatura de Minería de Datos (las dos actividades desarrolladas en esa asignatura se pueden consultar en el repositorio de GitHub), una empresa de gestión de viviendas de alquiler turístico, sin presencia en Andalucía, quiere introducirse en la región invirtiendo en algunos municipios.</p>
+          <p>El consejo de dirección de la empresa quiere mejorar su conocimiento del mercado turístico en Andalucía, para lo cual desean tener un perfil del sector de las viviendas de alquiler turístico de cada municipio de la región, para comparar unos perfiles con otros y así detectar oportunidades de negocio.</p>
+
+          <h3>Origen de los datos</h3>
+          <p>La tabla de datos de partida se corresponde con el dataset completo en formato CSV de OpenRTA, el Registro de Turismo de Andalucía. Es un registro de acceso público disponible en el Portal de Datos Abiertos de la Junta de Andalucía, en <a href="https://www.juntadeandalucia.es/datosabiertos/portal/dataset/openrta" target=_blank>https://www.juntadeandalucia.es/datosabiertos/portal/dataset/openrta</a>. El archivo con el que se trabajó tiene datos actualizados a 25 de mayo de 2023 y está publicado bajo la licencia Reconocimiento 4.0 Internacional (CC BY 4.0) de Creative Commons,aprobada para “obras culturales libres”</p>
+          <p>Los datos que se van a utilizar son la vista minable obtenida en la Actividad 2 de Minería de Datos, cargados en la hoja de cálculo de GoogleSheets referenciada al inicio de este trabajo práctico.</p>
+          <p>Se complementan con otros datos obtenidos del portal dataestur.es, de la Secretaría de Estado de Turismo del Gobierno de España, que cuenta con una selección de los datos más relevantes del turismo de España para su consulta y estudio. En concreto se ha utilizado la tarifa media diaria (ADR) en el año 2022 del informe <a href="https://www.dataestur.es/alojamientos/adr/" target=_blank>Indicadores de rentabilidad del sector hotelero</a>.</p>
+
+
+      <h3>Herramientas utilizadas</h3>
+      <p>Se han utilizado las siguientes herramientas, principalmente por su disponibilidad gratuita en internet, por la variedad de gráficos que ofrecen y por su facilidad para ser integradas en una presentación online:</p>
+
+      <p><li type="disc"><b>Datawrapper</b>, plataforma en línea que permite crear visualizaciones de datos como gráficos y mapas sin apenas requerir habilidades de programación o diseño, con la que se han elaborado los dos mapas (coroplético y de símbolos proporcionales) del primer apartado ("Total plazas turísticas por provincia").</p>
+      
+      <p><li type="disc"><b>Google Sheets</b>, la aplicación de hojas de cálculo en línea desarrollada por Google, en la que se han almacenado los datos y con la que se han elaborado los gráficos del segundo apartado ("Total plazas turísticas por provincia y por tipo"): un gráfico de barras apiladas y un gráfico de anillo.</p>
+
+      <p><li type="disc"><b>Google Looker Studio</b>, herramienta de creación de informes y analítica web desarrollada por Google que permite crear cuadros de mando interactivos, con la que se ha realizado el informe interactivo del tercer apartado ("Informe interactivo sobre los puntos turísticos").</p>
+
+      <p>Y todo ello integrado en <b>StackBlitz</b>, entorno de desarrollo en línea que proporciona una plataforma para crear, colaborar y compartir aplicaciones web de manera rápida y sencilla simplemente visitando una URL.</p>
+  
+      <h3>Tipos de gráficos utilizados</h3>
+      <p>Los gráficos utilizados en este trabajo han sido:</p>
+      <p><li type="disc">Un <b>mapa cloropético</b> para representar el valor agregado por provincias del total de plazas turísticas. </p>
+      <p><li type="disc">Un <b>mapa de símbolos proporcionales</b> para representar el total de plazas turísticas en cada provincia con un círculo de tamaño proporcional a ese valor total. </p>
+      <p><li type="disc">Un <b>gráficos de barras apiladas</b> para representar comparaciones numéricas entre los distintos tipos de viviendas turísticas.</p>
+      <p><li type="disc">Un <b>gráfico de anillo</b> para mostrar el porcentaje por provincia de viviendas con fines turísticos en Andalucía, ya que da una idea rápida de la distribución de la proporción.</p>
+      <p><li type="disc">En el informe interactivo se han utilizado además un <b>gráfico de rádar</b>, que permite representar datos en varias dimensiones en forma de un polígono con varios vértices.
+
+    </div>
+
+    <div class="section">
+      <h2>Audiencia</h2>
+      <p>La audiencia es el consejo de dirección de la empresa, el órgano de la empresa encargado de gestionarla y de tomar las decisiones estratégicas. </p>
+      <p>El consejo está formado por el presidente, el director ejecutivo (CEO), el director financiero (CFO), el director de operaciones (COO) y varios consejeros independientes (personas externas a la empresa que aportan su experiencia y perspectiva).
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Objetivo</h2>
+      <p>El objetivo de la audiencia (el consejo de dirección) es adquirir, de una forma rápida y muy visual, la información que necesitan para conocer mejor el mercado y decidir donde invertir.</p>
+      <p>Consecuentemente, el objetivo que se pretende conseguir con este trabajo práctico es:</p>
+      <ul><li type="disc">presentar la situación del mercado de las viviendas de alquiler turístico en Andalucía.</li>
+      <p></p>
+      <li type="disc">brindar información sobre los municipios en los que puede resultar más interesante invertir en este mercado.</li>
+      </ul></p>
+      <p>Por lo tanto, se trata de un análisis descriptivo de los datos: se analizarán los datos históricos para extraer información y conclusiones. </p>
+    </div>
+
+    <div class="section">
+      <h2>Mensaje</h2>
+      <p>Como la audiencia está formada perfiles muy diferentes, hay que adaptar la presentación para asegurarse de que sea relevante, comprensible y atractiva para todos los participantes, evitando jergas o tecnicismos innecesarios e incorporando gráficos de diversos tipos que hagan la presentación más atractiva.</p>
+
+      <p>El mensaje está formado por los siguientes gráficos, apoyados por las explicaciones que les acompañan:</p>
+
+      <h3>1: Total plazas turísticas por provincia</h3>
+
+      <p>Como primera aproximación, se muestra el mapa de Andalucía con el número total de plazas turísticas por cada provincia:</p>
+      <iframe title="Total plazas turísticas por provincia" aria-label="Map" id="datawrapper-chart-NzbMV" src="https://datawrapper.dwcdn.net/NzbMV/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="300" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+      </script>
+      <p class="pie-grafico">Gráfico 1a: Total plazas turísticas por provincia (mapa coroplético)</p>
+      <p>Se puede observar que todas las provincias menos una tienen en total menos de 200.000 plazas turísticas (tres de ellas menos de 100.000 y cuatro entre 100.000 y 200.000), destacando una sobre las demás.</p>
+
+      <p>La primera provincia en número de plazas (Málaga, con 540.000) casi triplica a la segunda (Cádiz, con 195.000). Esto se puede apreciar mejor en el siguiente mapa de símbolos proporcionales, en el que uno de los círculos parece igualar la suma de todos los demás: </p>
+      <iframe title="Total plazas turísticas por provincia" aria-label="Map" id="datawrapper-chart-fTKF5" src="https://datawrapper.dwcdn.net/fTKF5/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="568" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();</script>
+      <p class="pie-grafico">Gráfico 1b: Total plazas turísticas por provincia (mapa de símbolos proporcionales)</p>
+
+      <h3>2: Total plazas turísticas por provincia y por tipo</h3>
+      <p>Mostrando las plazas de cada provincia según su tipo, y destacando las viviendas con fines turísticas al ser el objeto de este informe, se confirma que hay una provincia que destaca sobre las demás, casi cuadruplicando las plazas de la segunda provincia con más viviendas con fines turísticos:</p>
+      <iframe width="803" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQE1qgTYPWY5YyK2x02B6N7frQllN6y6E-AOfrhPPLpgJVawbM2c3kTZ1nX8m-0Y6LiIU1pXZlt3mvZ/pubchart?oid=1777040944&amp;format=interactive"></iframe>
+      <p class="pie-grafico">Gráfico 2a: Total plazas turísticas por provincia y por tipo (gráfico de barras apiladas)</p>
+
+      <p>Con el siguiente gráfico de anillo, que representa el porcentaje que corresponde a cada provincia sobre el total de viviendas con fines turísticos en Andalucía, se aprecia incluso mejor que Málaga copa más de la mitad de las plazas (casi seis de cada diez viviendas con fines turísticos en Andalucía están en la provincia de Málaga):</p>
+      <iframe width="729" height="431" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQE1qgTYPWY5YyK2x02B6N7frQllN6y6E-AOfrhPPLpgJVawbM2c3kTZ1nX8m-0Y6LiIU1pXZlt3mvZ/pubchart?oid=387363305&amp;format=interactive"></iframe>+
+      <p class="pie-grafico">Gráfico 2b: Porcentaje por provincia de viviendas con fines turísticos en Andalucía (gráfico de anillo)</p>
+
+      <h3>3. Informe interactivo sobre los puntos turísticos</h3>
+      <p>Con los gráficos anteriores se ha podido ver con total claridad que la máxima concentración de plazas turísticas en general, y de viviendas con fines turísticos en particular, está en Málaga</p>
+
+      <p>A continuación se muestra un informe interactivo con los datos correspondientes a los puntos turísticos en la provincia de Málaga, que permite seleccionar uno o varios puntos y comparar sus valores en cuanto a tarifa media diaria en los hoteles de ese punto turístico, número de hoteles (y plazas en hoteles), número de viviendas de alquiler turístico (y plazas en ellas), plazas en apartamentos turísticos y número de total de plazas en establecimientos turísticos.</p>
+      <iframe width="1000" height="750" src="https://lookerstudio.google.com/embed/reporting/12a9019a-b95d-4265-8925-e7843cd43edd/page/BbEjD" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <p class="pie-grafico">Gráfico 3: Informe interactivo</p>
+      <p>Tras navegar por el informe e interactuar con sus elementos, seleccionando simultáneamente varios de los puntos turísticos (a través del desplegable o pinchando sobre varios de ellos manteniendo pulsada la tecla Control) y explorando los datos mostrados, se puede tomar la decisión de invertir en uno o en otro punto turístico.</p>
+      <p>Esta decisión puede tomarse de acuerdo a varios factores, por ejemplo buscando robar cuota de mercado a los establecimientos hoteleros, por lo que se buscará invertir:</p>
+      <p><li type="disc">en donde haya gran número de hoteles</p>
+      <p><li type="disc">en donde haya hoteles con una alta tarifa media diaria</p>
+      <p><li type="disc">en donde no el mercado no esté saturado de viviendas de alquiler turístico</p>
+
+    </div>
+
+    <div class="section">
+      <h2>Conclusiones</h2>
+      <p><b>Conclusiones: </b>Partiendo de un conjunto de datos elegido principalmente por contener datos en bruto (para limpiarlos en la asignatura de Minería de Datos) se ha conseguido transmitir el mensaje a la audiencia, lográndose el objetivo planteado de presentar la situación del mercado de las viviendas de alquiler turístico en Andalucía e informar sobre los municipios en los que puede resultar más interesante invertir en ese mercado.</p>
+      <p>Para ello se han utilizado varias herramientas para elaborar gráficos de diferentes tipos, buscando mantener la atención de la audiencia y dar respuesta a su objetivo inicial.</p>
+      <p>El comité de dirección, tras la presentación consideró que invertir en Marbella o en Nerja se presentaban como buenas opciones para la empresa.</p>
+      <p><b>Trabajo futuro:</b> ampliar la base de datos con los puntos turísticos de las demás provincias de Andalucía o incluso de otras comunidades autónomas.</p>
+    </div>
+
+
+    
+
+  </div>
+
+</body>
+</html>
